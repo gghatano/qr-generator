@@ -85,7 +85,7 @@
       sizeValue.textContent = sizeSlider.value;
     });
 
-    generateBtn.addEventListener('click', () => {
+    function generateQR() {
       const text = textInput.value.trim();
       if (!text) {
         alert('URLまたはテキストを入力してください。');
@@ -129,7 +129,13 @@
       // ダウンロードリンクを設定
       downloadBtn.href = qrCanvas.toDataURL('image/png');
       previewArea.classList.remove('hidden');
-    });
+    }
+
+    generateBtn.addEventListener('click', generateQR);
+
+    // ページ読み込み時にデフォルトのQRコードを表示
+    textInput.value = 'https://example.com';
+    generateQR();
   </script>
 </body>
 </html>
